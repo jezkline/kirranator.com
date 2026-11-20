@@ -7,10 +7,9 @@
 <meta name="description" content="kirranator">
 <meta name="theme-color" content="#84c59d">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@1,112,900&display=swap&text=kirnato" rel="stylesheet">
+<link rel="preload" href="soopafresh.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  @font-face { font-family: "Soopafresh"; src: url("soopafresh.woff2") format("woff2"); font-display: block; }
   :root { --bg: #84c59d; --fg: #ffffff; }
   * { margin: 0; box-sizing: border-box; }
   html, body { height: 100%; }
@@ -26,14 +25,11 @@
   a {
     color: inherit;
     text-decoration: none;
-    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
-    font-style: italic;
-    font-weight: 900;
-    font-stretch: 112%;
-    font-size: clamp(2.6rem, 12.5vw, 11rem);
-    letter-spacing: -0.035em;
+    font-family: "Soopafresh", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    font-size: clamp(2.6rem, 17vw, 14rem);
     line-height: 1;
-    padding: 0.1em 0.12em 0.14em 0.04em;
+    padding: 0.1em;
     transition: transform .25s ease;
   }
   a:hover { transform: translateY(-3px); }
