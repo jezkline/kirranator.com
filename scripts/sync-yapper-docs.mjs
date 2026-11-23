@@ -6,6 +6,7 @@
 //
 //   npm run sync-docs
 //
+// Site-only pages in that folder (e.g. roadmap.md) are left alone.
 // Set YAPPER_DOCS to read from somewhere other than the default local checkout.
 
 import { readdir, readFile, writeFile, rm, mkdir } from 'node:fs/promises';
@@ -61,8 +62,14 @@ function convert(markdown, file) {
 const files = (await readdir(source)).filter((f) => f.endsWith('.md'));
 if (!files.includes('Yapper.md')) throw new Error(`No Yapper.md in ${source}. Is YAPPER_DOCS right?`);
 
-await rm(target, { recursive: true, force: true });
+// Remove the pages this script generated last time (a doc may have been renamed or deleted), but keep
+// site-only pages such as roadmap.md, which don't have the generated header.
+const marker = "# Generated from Yapper's Documentation~/";
 await mkdir(target, { recursive: true });
+for (const existing of await readdir(target)) {
+	const file = path.join(target, existing);
+	if (existing.endsWith('.md') && (await readFile(file, 'utf8')).includes(marker)) await rm(file);
+}
 for (const file of files) {
 	const out = path.join(target, (slugFor(file) || 'index') + '.md');
 	await writeFile(out, convert(await readFile(path.join(source, file), 'utf8'), file));
