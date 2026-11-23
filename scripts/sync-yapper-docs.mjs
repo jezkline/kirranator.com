@@ -50,6 +50,8 @@ function convert(markdown, file) {
 		'---',
 		`# Generated from Yapper's Documentation~/${file} by scripts/sync-yapper-docs.mjs. Edit the original, not this copy.`,
 		`title: ${JSON.stringify(title)}`,
+		// The overview's title matches the site title, so give its browser tab a clearer name than "Yapper | Yapper".
+		...(slugFor(file) === '' ? ['head:', '  - tag: title', '    content: "Yapper | Documentation"'] : []),
 		'---',
 		'',
 		body,

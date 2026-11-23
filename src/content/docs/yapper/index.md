@@ -1,6 +1,9 @@
 ---
 # Generated from Yapper's Documentation~/Yapper.md by scripts/sync-yapper-docs.mjs. Edit the original, not this copy.
 title: "Yapper"
+head:
+  - tag: title
+    content: "Yapper | Documentation"
 ---
 
 Yapper is a branching dialogue and inner-monologue system for Unity. You write conversations as node graphs in an editor window. Your game decides who speaks, what the player can choose, and what happens as a result, using small C# classes that Yapper discovers automatically.
