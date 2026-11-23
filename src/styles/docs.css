@@ -1,0 +1,26 @@
+/* kirranator.com colours and wordmark font for the docs. */
+@font-face {
+	font-family: 'Soopafresh';
+	src: url('/soopafresh.woff2') format('woff2');
+	font-display: swap;
+}
+
+/* Dark theme */
+:root {
+	--sl-color-accent-low: #1d3a28;
+	--sl-color-accent: #84c59d;
+	--sl-color-accent-high: #d6efdf;
+}
+
+/* Light theme: a darker green so links and highlights stay readable on white. */
+:root[data-theme='light'] {
+	--sl-color-accent-low: #d6efdf;
+	--sl-color-accent: #2f7a4d;
+	--sl-color-accent-high: #1b4a2e;
+}
+
+.site-title {
+	font-family: 'Soopafresh', var(--sl-font);
+	font-weight: 400;
+	letter-spacing: 0.02em;
+}
