@@ -25,7 +25,14 @@ export default defineConfig({
 						{ slug: 'yapper/saving' },
 						{ slug: 'yapper/troubleshooting' },
 						{ slug: 'yapper/api' },
-						{ slug: 'yapper/roadmap' },
+						{
+							label: 'Roadmap',
+							items: [
+								{ slug: 'yapper/roadmap', label: 'Yapper' },
+								{ slug: 'yapper/roadmap/hoarder', label: 'Hoarder' },
+								{ slug: 'yapper/roadmap/gopher', label: 'Gopher' },
+							],
+						},
 					],
 				},
 			],
