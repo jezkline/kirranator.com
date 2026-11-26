@@ -1,5 +1,8 @@
 ---
-// The kirranator.com landing page (unchanged from the original index.html).
+// The kirranator.com landing page: the typed-text banner loops fullscreen
+// and the whole page links to the Yapper docs.
+// It's a GIF on purpose. Browsers color-manage video differently from CSS,
+// so an MP4's green never quite matches the page and shows a visible band.
 ---
 <!doctype html>
 <html lang="en">
@@ -7,40 +10,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>kirranator</title>
-<meta name="description" content="kirranator">
+<meta name="description" content="kirranator — modular dev systems">
 <meta name="theme-color" content="#84c59d">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/soopafresh.woff2" as="font" type="font/woff2" crossorigin>
 <style is:global>
-  @font-face { font-family: "Soopafresh"; src: url("/soopafresh.woff2") format("woff2"); font-display: block; }
   :root { --bg: #84c59d; --fg: #ffffff; }
   * { margin: 0; box-sizing: border-box; }
   html, body { height: 100%; }
-  body {
-    background: var(--bg);
-    color: var(--fg);
-    display: grid;
-    place-items: center;
-    min-height: 100svh;
-    padding: 16px;
-    -webkit-font-smoothing: antialiased;
-  }
-  a {
-    color: inherit;
-    text-decoration: none;
-    font-family: "Soopafresh", "Helvetica Neue", Arial, sans-serif;
-    font-weight: 400;
-    font-size: clamp(2.6rem, 17vw, 14rem);
-    line-height: 1;
-    padding: 0.1em;
-    transition: transform .25s ease;
-  }
-  a:hover { transform: translateY(-3px); }
-  a:focus-visible { outline: 4px solid var(--fg); outline-offset: 8px; border-radius: 6px; }
-  @media (prefers-reduced-motion: reduce) { a { transition: none; } a:hover { transform: none; } }
+  body { background: var(--bg); overflow: hidden; }
+  a.stage { position: fixed; inset: 0; display: block; }
+  /* contain, not cover: the banner's own background is the page green,
+     so the letterbox disappears and the text never gets cropped. */
+  a.stage img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  a.stage:focus-visible { outline: 4px solid var(--fg); outline-offset: -12px; border-radius: 12px; }
 </style>
 </head>
 <body>
-  <a href="mailto:contact@kirranator.com" aria-label="kirranator — email contact@kirranator.com">kirranator</a>
+  <a class="stage" href="/yapper/">
+    <picture>
+      <source srcset="/bg-still.png" media="(prefers-reduced-motion: reduce)">
+      <img src="/bg-loop.gif" width="1950" height="1300" alt="kirranator: modular dev systems. Yapper, decision-tree builder.">
+    </picture>
+  </a>
 </body>
 </html>
